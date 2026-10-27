@@ -93,7 +93,7 @@ export default function App() {
     : `${filteredPhotos.length} ${filteredPhotos.length === 1 ? "photograph" : "photographs"}`;
 
   return (
-    <main className="mx-auto min-h-screen w-full max-w-[1440px] px-5 pb-16 pt-6 sm:px-8 lg:px-14 lg:pt-8">
+    <main className="mx-auto min-h-screen w-full max-w-[1440px] px-5 pb-16 pt-6 sm:px-8 lg:px-10 lg:pt-8 xl:px-14">
       <header className="flex items-center justify-between border-b border-line pb-5">
         <a href="#top" className="inline-flex items-center gap-3" aria-label="Stillroom home">
           <span className="relative grid h-9 w-9 place-items-center rounded-full border border-clay/45">
@@ -112,7 +112,7 @@ export default function App() {
 
       <section
         id="top"
-        className="relative isolate grid gap-6 overflow-hidden rounded-[4px] bg-ink px-6 py-8 sm:px-9 sm:py-10 lg:grid-cols-[1fr_310px] lg:items-end lg:gap-12 lg:px-12 lg:py-12"
+        className="relative isolate grid grid-cols-1 gap-6 overflow-hidden rounded-[4px] bg-ink px-6 py-8 sm:px-9 sm:py-10 xl:grid-cols-[1fr_310px] xl:items-end xl:gap-12 xl:px-12 xl:py-12"
       >
         <span
           aria-hidden="true"
@@ -129,7 +129,7 @@ export default function App() {
             Collected <span className="font-display italic text-[#d7a08a]">moments.</span>
           </h1>
         </div>
-        <p className="relative z-10 max-w-[340px] border-l border-white/15 pl-4 font-sans text-[13px] leading-[1.8] text-paper/70 sm:pl-5 lg:justify-self-end lg:pb-1">
+        <p className="relative z-10 max-w-[340px] border-l border-white/15 pl-4 font-sans text-[13px] leading-[1.8] text-paper/70 sm:pl-5 xl:justify-self-end xl:pb-1">
           Thirty frames from the everyday. Find a photographer by name, and keep the images that stay with you.
         </p>
       </section>
@@ -164,7 +164,7 @@ export default function App() {
         ) : error ? (
           <ErrorState message={error} />
         ) : filteredPhotos.length > 0 ? (
-          <div className="grid grid-cols-1 gap-x-5 gap-y-8 md:grid-cols-2 md:gap-x-6 md:gap-y-10 lg:grid-cols-4 lg:gap-x-6">
+          <div className="grid grid-cols-1 gap-x-5 gap-y-8 md:grid-cols-2 md:gap-x-6 md:gap-y-10 xl:grid-cols-4 xl:gap-x-6">
             {filteredPhotos.map((photo, index) => (
               <PhotoCard
                 key={photo.id}
