@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+@theme {
+  --color-paper: #f4f1eb;
+  --color-ink: #252522;
+  --color-muted: #77746e;
+  --color-line: #dedad1;
+  --color-clay: #a35d48;
+  --color-olive: #777f5e;
+  --font-display: "Iowan Old Style", "Baskerville", "Palatino Linotype", Georgia, serif;
+  --font-sans: "Avenir Next", Avenir, "Segoe UI", sans-serif;
+}
+
+@layer base {
+  :root {
+    color-scheme: light;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-paper font-sans text-ink antialiased;
+    margin: 0;
+    min-width: 320px;
+  }
+
+  button,
+  input {
+    font: inherit;
+  }
+
+  ::selection {
+    background: #a35d48;
+    color: #fffdf8;
+  }
+}
