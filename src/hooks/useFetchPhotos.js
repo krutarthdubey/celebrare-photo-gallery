@@ -30,8 +30,12 @@ export function useFetchPhotos() {
 
         setPhotos(result);
       } catch (fetchError) {
-        if (fetchError.name !== "AbortError") {
-          setError(fetchError.message || "The photos could not be loaded.");
+        if (!controller.signal.aborted) {
+          setError(
+            fetchError instanceof Error
+              ? fetchError.message
+              : "The photos could not be loaded.",
+          );
         }
       } finally {
         if (!controller.signal.aborted) {

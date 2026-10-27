@@ -84,9 +84,13 @@ export default function App() {
     );
   }, [photos, searchTerm]);
 
-  const handleToggleFavourite = useCallback((photoId) => {
+  function handleToggleFavourite(photoId) {
     dispatch({ type: "toggle", photoId });
-  }, []);
+  }
+
+  const collectionCountLabel = loading
+    ? "Loading"
+    : `${filteredPhotos.length} ${filteredPhotos.length === 1 ? "photograph" : "photographs"}`;
 
   return (
     <main className="mx-auto min-h-screen w-full max-w-[1440px] px-5 pb-16 pt-6 sm:px-8 lg:px-14 lg:pt-8">
@@ -137,7 +141,7 @@ export default function App() {
               The collection
             </h2>
             <span className="font-sans text-[11px] text-muted">
-              {loading ? "Loading" : `${filteredPhotos.length} ${filteredPhotos.length === 1 ? "photograph" : "photographs"}`}
+              {collectionCountLabel}
             </span>
           </div>
 

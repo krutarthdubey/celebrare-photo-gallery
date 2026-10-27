@@ -17,7 +17,19 @@ function HeartIcon({ filled }) {
   );
 }
 
-export default function PhotoCard({ photo, index, isFavourite, onToggleFavourite }) {
+export default function PhotoCard({
+  photo,
+  index,
+  isFavourite,
+  onToggleFavourite,
+}) {
+  const favouriteButtonLabel = isFavourite
+    ? `Remove photo by ${photo.author} from favourites`
+    : `Add photo by ${photo.author} to favourites`;
+  const favouriteButtonClass = isFavourite
+    ? "border-white/70 bg-[#fcf8f4] text-clay"
+    : "border-white/70 bg-[#f8f6f1]/80 text-ink backdrop-blur-sm hover:scale-105 hover:bg-white";
+
   return (
     <article className="group min-w-0">
       <div className="relative isolate overflow-hidden rounded-[4px] bg-stone-200 shadow-[0_16px_38px_-24px_rgba(37,37,34,0.62)] ring-1 ring-ink/10">
@@ -38,14 +50,14 @@ export default function PhotoCard({ photo, index, isFavourite, onToggleFavourite
 
         <button
           type="button"
-          aria-label={`${isFavourite ? "Remove" : "Add"} ${photo.author} photo ${isFavourite ? "from" : "to"} favourites`}
+          aria-label={favouriteButtonLabel}
           aria-pressed={isFavourite}
           onClick={() => onToggleFavourite(photo.id)}
-          className={`absolute right-3 top-3 grid h-10 w-10 place-items-center rounded-full border transition duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-clay ${
-            isFavourite
-              ? "border-white/70 bg-[#fcf8f4] text-clay"
-              : "border-white/70 bg-[#f8f6f1]/80 text-ink backdrop-blur-sm hover:scale-105 hover:bg-white"
-          }`}
+          className={[
+            "absolute right-3 top-3 grid h-10 w-10 place-items-center rounded-full border",
+            "transition duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-clay",
+            favouriteButtonClass,
+          ].join(" ")}
         >
           <HeartIcon filled={isFavourite} />
         </button>
